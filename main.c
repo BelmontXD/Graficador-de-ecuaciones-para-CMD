@@ -107,7 +107,7 @@ int main (){
 
 	//Interpolar valores: //y1: 120 y y2: 91:
 	
-
+	
 	for (int i=0; i<cantidad; i++){
 
 		if (i+1 > cantidad){
