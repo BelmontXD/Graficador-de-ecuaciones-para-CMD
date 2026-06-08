@@ -63,11 +63,11 @@ float *interpolador(char eje, int cant_intervalos, float x1, float y1, float x2,
 			break;
 		case 'y': // Buscar valores y
 			lista_intermedios = secuencia(cant_intervalos, x1, x2); 
-			//puts("------ Calculo de interpolacion con los intervalos------\n");
+			puts("------ Calculo de interpolacion con los intervalos------\n");
 			for (int i = 0; i<cant_intervalos; i++){
 				formula = y1 + ((lista_intermedios[i]-x1)*(y2-y1)/(x2-x1));
 				lista_interpolados[i] = formula;
-				//printf("x%d = %.1f -> y%d = %.1f\n", i+1, lista_intermedios[i], i+1, formula);
+				printf("x%d = %.1f -> y%d = %.1f\n", i+1, lista_intermedios[i], i+1, formula);
 			}
 			break;
 		default:

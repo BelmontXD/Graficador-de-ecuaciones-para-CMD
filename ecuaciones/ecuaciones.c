@@ -1,32 +1,125 @@
 #include <stdio.h>
-#include "../lib_memoria/memorias_dinamicas.c"
+//#include "../lib_memoria/memorias_dinamicas.c"
 
+
+
+typedef struct {
+    float a, b;
+    int desde, hasta, cantidad;
+
+    int matriz_filas, matriz_columnas;
+    float **matriz;
+
+} primer_grado;
 
 
 
 typedef struct {
     float a, b, c;
     int desde, hasta, cantidad;
+
+    int matriz_filas, matriz_columnas;
     float **matriz;
 
-} struct_segundo_grado;
+} segundo_grado;
 
 
-int main(){
-    struct_segundo_grado eq;
+typedef struct {
+    float a, b, c, d;
+    int desde, hasta, cantidad;
 
-    eq.a = 2;
-	eq.b = 9;
-	eq.c = 10;
-    eq.desde = -13;
-	eq.hasta = 10;
-    eq.cantidad = eq.hasta - eq.desde + 1;
+    int matriz_filas, matriz_columnas;
+    float **matriz;
 
-    eq.matriz = crear_matriz_float(eq.cantidad, 2);
+} tercer_grado;
 
-    imprimir_matriz_float(eq.matriz, eq.cantidad, 2);   
-    
+int indices_iguales(int desde, int hasta){
+    printf("ERROR: Indices de iteracion iguales... retornando cero");
 
-    liberar_matriz(eq.matriz, eq.cantidad);
     return 0;
+}
+
+primer_grado ecuacion_primer_grado(float a, float b, int desde, int hasta){
+    primer_grado eq;
+
+    eq.a = a;
+	eq.b = b;
+    eq.desde = desde;
+	eq.hasta = hasta;
+    eq.cantidad = eq.hasta - eq.desde + 1;
+    eq.matriz_filas = eq.cantidad;
+    eq.matriz_columnas = 2;
+
+    eq.matriz = crear_matriz_float(eq.matriz_filas, eq.matriz_columnas);
+
+    int i = 0;
+	for (int x = eq.desde; x<=eq.hasta; x++){
+
+		eq.matriz[i][1] = (eq.a * x) + (eq.b);
+		eq.matriz[i][0] = x;
+		i++;
+	}
+
+    //imprimir_matriz_float(eq.matriz, eq.cantidad, 2);   
+    
+    return eq;
+}
+
+segundo_grado ecuacion_segundo_grado(float a, float b, float c, int desde, int hasta){
+    segundo_grado eq;
+
+    eq.a = a;
+	eq.b = b;
+	eq.c = c;
+    eq.desde = desde;
+	eq.hasta = hasta;
+    eq.cantidad = eq.hasta - eq.desde + 1;
+    eq.matriz_filas = eq.cantidad;
+    eq.matriz_columnas = 2;
+
+    eq.matriz = crear_matriz_float(eq.matriz_filas, eq.matriz_columnas);
+
+    int i = 0;
+	for (int x = eq.desde; x<=eq.hasta; x++){
+
+		eq.matriz[i][1] = ( eq.a * (x*x)) + (eq.b*x) + eq.c;
+		eq.matriz[i][0] = x;
+		i++;
+	}
+
+    //imprimir_matriz_float(eq.matriz, eq.cantidad, 2);   
+    
+    return eq;
+}
+
+
+
+tercer_grado ecuacion_tercer_grado(float a, float b, float c, float d, int desde, int hasta){
+    tercer_grado eq;
+
+    eq.a = a;
+	eq.b = b;
+	eq.c = c;
+    eq.d = d;
+    eq.desde = desde;
+	eq.hasta = hasta;
+    //if (eq.hasta )
+
+    eq.cantidad = eq.hasta - eq.desde + 1;
+    eq.matriz_filas = eq.cantidad;
+    eq.matriz_columnas = 2;
+
+    eq.matriz = crear_matriz_float(eq.matriz_filas, eq.matriz_columnas);
+
+    int i = 0;
+	for (int x = eq.desde; x<=eq.hasta; x++){
+
+		eq.matriz[i][1] = ( eq.a * (x*x*x)) + (eq.b * (x*x)) + (eq.c * x) + eq.d;
+		eq.matriz[i][0] = x;
+		i++;
+	}
+
+    //imprimir_matriz_float(eq.matriz, eq.cantidad, 2);   
+    
+    return eq;
 }
