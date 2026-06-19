@@ -11,6 +11,17 @@ void imprimir_matriz_float(float **matriz, int filas, int columnas){
     }
 }
 
+
+void imprimir_matriz_char(char **matriz, int filas, int columnas){
+    puts("\n(X , Y)\n");
+    for (int i = 0; i < filas; i++){
+        for (int j = 0; j < columnas; j++){
+            printf("(%d , %d) [%c] ", j, i, matriz[i][j]);
+        }
+        puts("");
+    }
+}
+
 // Función para liberar la matriz
 void liberar_matriz(float **matriz, int filas) {
     puts("Proceso de limpiado");
