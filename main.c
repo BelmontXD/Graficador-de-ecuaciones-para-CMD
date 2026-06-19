@@ -223,5 +223,8 @@ int main (){
 	liberar_matriz(arreglo, ecuacion.matriz_filas);
 	liberar_matriz_char(buffer, cantidad_v);
 
+
+	puts("\n\nPresione una tecla para cerrar...");
+	getch();
 	return 0;
 }
